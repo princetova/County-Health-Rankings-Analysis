@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>County Health Rankings Analysis</title>
+<style>
+body {font-family: Arial, Helvetica, sans-serif; line-height: 1.6; margin: 0; background: #f7f9fc; color:#1f2937;}
+.container {max-width: 1100px; margin: 0 auto; padding: 32px;}
+.hero {background: linear-gradient(135deg,#0f172a,#1d4ed8); color: white; padding: 36px; border-radius: 20px; box-shadow: 0 12px 30px rgba(15,23,42,.18);}
+.hero h1 {margin: 0 0 8px; font-size: 2.1rem;}
+.hero p {margin: 6px 0 0; opacity: .92;}
+.card-grid {display:grid; grid-template-columns: repeat(auto-fit,minmax(210px,1fr)); gap:16px; margin: 22px 0;}
+.card {background:#fff; border-radius:16px; padding:18px; box-shadow:0 6px 20px rgba(15,23,42,.08);}
+.card h3 {margin:0 0 8px; font-size: .95rem; color:#334155;}
+.card .value {font-size:1.5rem; font-weight:700; color:#0f172a;}
+.section {background:#fff; border-radius:16px; padding:22px; margin-top:18px; box-shadow:0 6px 20px rgba(15,23,42,.08);}
+h2 {margin-top:0; color:#0f172a;}
+table {width:100%; border-collapse: collapse;}
+th, td {border-bottom:1px solid #e5e7eb; padding:10px 8px; text-align:left; vertical-align:top;}
+th {background:#f8fafc;}
+.code {background:#0b1020; color:#e5e7eb; padding:14px; border-radius:12px; overflow:auto;}
+.small {color:#475569; font-size:.95rem;}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <h1>County Health Rankings CSV Analysis</h1>
+    <p>End-to-end exploratory data analysis for GitHub and Microsoft Word presentation</p>
+    <p><strong>Primary focus:</strong> county child poverty and its relationship with premature death</p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card"><h3>Rows</h3><div class="value">303864</div></div><div class="card"><h3>Columns</h3><div class="value">14</div></div><div class="card"><h3>Exact duplicate rows</h3><div class="value">6793</div></div><div class="card"><h3>Duplicate share</h3><div class="value">2.24%</div></div><div class="card"><h3>Unique states / territories</h3><div class="value">53</div></div><div class="card"><h3>Unique county names</h3><div class="value">2008</div></div><div class="card"><h3>Unique FIPS codes</h3><div class="value">3275</div></div>
+  </div>
+
+  <div class="section">
+    <h2>Dataset overview</h2>
+    <p class="small">The raw dataset contains 303,864 rows and 14 columns. It includes state/county identifiers, year spans, 12 measures, and health outcome values. Exact duplicate rows account for 2.24% of the file and should be removed before final reporting.</p>
+  </div>
+
+  <div class="section">
+    <h2>Why 2012 is used for the main analysis</h2>
+    <p class="small">The 2012 release year is the best single-year slice for analysis because it contains 3,193 county rows and all 11 key measures with only small gaps. That allows a clean county-level pivot for correlation and comparison work.</p>
+  </div>
+
+  <div class="section">
+    <h2>Key metrics</h2>
+    <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Metric</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2012 county rows</td>
+      <td>35115</td>
+    </tr>
+    <tr>
+      <td>Measures in 2012</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>Missing values in 2012 pivot</td>
+      <td>616</td>
+    </tr>
+    <tr>
+      <td>Premature Death mean</td>
+      <td>8142.10</td>
+    </tr>
+    <tr>
+      <td>Premature Death median</td>
+      <td>7835.45</td>
+    </tr>
+    <tr>
+      <td>Children in poverty mean</td>
+      <td>0.241</td>
+    </tr>
+    <tr>
+      <td>Children in poverty median</td>
+      <td>0.234</td>
+    </tr>
+    <tr>
+      <td>Premature Death correlation with Children in poverty</td>
+      <td>0.699</td>
+    </tr>
+    <tr>
+      <td>Premature Death correlation with Uninsured</td>
+      <td>0.419</td>
+    </tr>
+    <tr>
+      <td>Premature Death correlation with Physical inactivity</td>
+      <td>0.575</td>
+    </tr>
+    <tr>
+      <td>Premature Death correlation with Adult obesity</td>
+      <td>0.519</td>
+    </tr>
+  </tbody>
+</table>
+  </div>
+
+  <div class="section">
+    <h2>Most important finding</h2>
+    <p class="small">Counties with higher child poverty also have much higher premature death. The correlation between <strong>Children in poverty</strong> and <strong>Premature Death</strong> is <strong>0.699</strong>. This is the strongest positive relationship in the main county-level analysis.</p>
+    <p class="small">When counties are grouped by child poverty quartile, the mean premature death rate rises from <strong>6173.47</strong> in the lowest poverty quartile to <strong>10420.88</strong> in the highest poverty quartile — a gap of about <strong>4247.41</strong>, or <strong>68.8%</strong>.</p>
+  </div>
+
+  <div class="section">
+    <h2>High-risk counties</h2>
+    <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Measure name</th>
+      <th>State</th>
+      <th>County</th>
+      <th>Premature Death</th>
+      <th>Children in poverty</th>
+      <th>Unemployment</th>
+      <th>Uninsured</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th></th>
+      <td>ND</td>
+      <td>Sioux County</td>
+      <td>24099.540</td>
+      <td>0.518</td>
+      <td>0.050232</td>
+      <td>0.143</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>SD</td>
+      <td>Shannon County</td>
+      <td>22432.583</td>
+      <td>0.489</td>
+      <td>0.124585</td>
+      <td>0.163</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>SD</td>
+      <td>Todd County</td>
+      <td>22402.983</td>
+      <td>0.581</td>
+      <td>0.070530</td>
+      <td>0.164</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>SD</td>
+      <td>Buffalo County</td>
+      <td>21269.701</td>
+      <td>0.475</td>
+      <td>0.154717</td>
+      <td>0.198</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>FL</td>
+      <td>Union County</td>
+      <td>19879.422</td>
+      <td>0.255</td>
+      <td>0.086860</td>
+      <td>0.266</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>AK</td>
+      <td>Yukon-Koyukuk Census Area</td>
+      <td>19817.731</td>
+      <td>0.349</td>
+      <td>0.149833</td>
+      <td>0.347</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>WV</td>
+      <td>McDowell County</td>
+      <td>18940.989</td>
+      <td>0.454</td>
+      <td>0.108837</td>
+      <td>0.202</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>AK</td>
+      <td>Lake and Peninsula Borough</td>
+      <td>18851.256</td>
+      <td>0.253</td>
+      <td>0.080146</td>
+      <td>0.388</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>SD</td>
+      <td>Corson County</td>
+      <td>18674.860</td>
+      <td>0.541</td>
+      <td>0.072689</td>
+      <td>0.225</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>SD</td>
+      <td>Dewey County</td>
+      <td>18636.596</td>
+      <td>0.415</td>
+      <td>0.124287</td>
+      <td>0.214</td>
+    </tr>
+  </tbody>
+</table>
+  </div>
+
+  <div class="section">
+    <h2>Recommended solution</h2>
+    <p class="small">Focus on high-poverty counties with a package of interventions: expand preventive care access, reduce uninsured rates, support nutrition and activity programs, and target economic support for families with children. The data suggests that health and social outcomes move together, so the solution should be multi-sector rather than medical-only.</p>
+  </div>
+</div>
+</body>
+</html>
