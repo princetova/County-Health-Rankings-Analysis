@@ -25,6 +25,31 @@ The project demonstrates the complete data analysis workflow, from data explorat
 
 ---
 
+## 📈 Project Statistics
+
+- 📄 Records Analyzed: **303,864**
+- 📊 Variables: **14**
+- 🧹 Duplicate Records Removed: **6,793**
+- 📅 Analysis Year: **2012**
+- 🔍 Strongest Correlation: **Children in Poverty vs Premature Death (r = 0.699)**
+
+---
+
+# 🔄 Analysis Workflow
+
+1. Data Collection
+2. Data Understanding
+3. Data Cleaning
+4. Exploratory Data Analysis (EDA)
+5. Correlation Analysis
+6. Data Visualization
+7. Problem Identification
+8. Root Cause Analysis
+9. Recommendations
+10. Report Generation
+
+---
+
 # 🎯 Business Problem
 
 **Which county-level factors contribute most strongly to premature death, and how can these findings inform public health interventions?**
@@ -33,20 +58,22 @@ The project demonstrates the complete data analysis workflow, from data explorat
 
 # 📂 Dataset
 
-The dataset contains county-level health indicators including:
+This project uses the **County Health Rankings** dataset, which contains county-level health indicators across the United States. The dataset includes measures related to health outcomes, health behaviors, clinical care, socioeconomic factors, and the physical environment.
 
-- Children in Poverty
-- Adult Obesity
-- Physical Inactivity
-- Unemployment
-- Uninsured Population
-- Preventable Hospital Stays
-- Violent Crime
-- Premature Death
-- Mammography Screening
-- Diabetic Screening
+### Key Variables
 
-> **Note:** The original dataset is not included in this repository due to its size. To reproduce the analysis, place `County_Health_Rankings.csv` inside the `data/` folder.
+* Children in Poverty
+* Adult Obesity
+* Physical Inactivity
+* Unemployment
+* Uninsured Population
+* Preventable Hospital Stays
+* Violent Crime
+* Premature Death
+* Mammography Screening
+* Diabetic Screening
+
+The original dataset is included in the repository under the **`data/`** directory, allowing the analysis to be fully reproducible.
 
 ---
 
@@ -85,7 +112,7 @@ County-Health-Rankings-Analysis
 
 Open the complete notebook here:
 
-**➡️ notebooks/County_Health_Rankings_Analysis.ipynb**
+➡️ **[Open the Jupyter Notebook](notebooks/County_Health_Rankings_Analysis.ipynb)**
 
 ---
 
@@ -130,12 +157,9 @@ Open the complete notebook here:
 
 # 📄 Reports
 
-The repository includes:
-
-- 📓 Jupyter Notebook
-- 📄 Microsoft Word Report
-- 🌐 HTML Report
-- 📈 Visualizations
+- 📓 [Jupyter Notebook](notebooks/County_Health_Rankings_Analysis.ipynb)
+- 📄 [Microsoft Word Report](reports/County_Health_Rankings_Presentation_Report.docx)
+- 🌐 [HTML Report](reports/County_Health_Rankings_Analysis_Report.html)
 
 ---
 
